@@ -6,11 +6,21 @@ import { Component } from '@angular/core';
     <div>
       <h1>Upcoming Angular Events</h1>
       <hr />
-      <event-thumbnail [event]="event1"></event-thumbnail>
+      <event-thumbnail
+        (eventClick)="handleEventClicked($event)"
+        [event]="event1"
+      ></event-thumbnail>
     </div>
   `,
 })
+
+// eventClick has to match the evenClick Output in the Child Component.
+// event1 has to match the event1 in the parent.
+// event has to match the event Input in the Child Component.
 export class EventsListComponent {
+  handleEventClicked(data) {
+    console.log('recieved: ', data);
+  }
   event1 = {
     id: 1,
     name: 'Angular Connnect',
